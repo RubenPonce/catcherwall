@@ -1,19 +1,21 @@
-import { LiveEvents } from "../molecules/LiveEvents";
-import { StaticChannels, StaticEvents } from "../molecules/StaticEvents";
+import { StaticChannels } from "../molecules/StaticEvents";
 import { useEffect, useState } from "react";
-import { useGetChannels } from "../../queries/getchannels";
 import { useGetContentLatestContent } from "../../queries/getContent";
+import {Tab} from "../atoms/Tab";
 
 export const ContentWallContainer = () => {
   const { loading, error, data } = useGetContentLatestContent();
-  console.log({ data });
   const [events, setEvents] = useState({
     liveChannels: [],
     staticContent: [],
   });
-
+  const [isFilterEnabled, setIsFilterEnabled] = useState(true);
+  const handleToggle = () => {
+    setIsFilterEnabled(!isFilterEnabled);
+  };
   useEffect(() => {
     if (!loading && !error) {
+      //@TODO: add live through polling service
       /*  const liveChannels = data.channels.filter(
         (channel) => channel.status.live.isLive,
       );*/
@@ -23,17 +25,26 @@ export const ContentWallContainer = () => {
     }
   }, [loading, error, data]);
 
-  /*  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-  return <></>;*/
   return (
-    <div className="w-full">
-      <h1 className="bg-red-300">Current Happening in the Community</h1>
-      {/* The Event Container */}
-      <div className="border-amber-200 h-full w-full">
+    <div className="">
+      {/* Tab for media providers */}
+      <Tab>
         {/*        <LiveEvents channels={events.liveChannels} />*/}
-        <StaticChannels content={events.staticContent} />
-      </div>
+        <section className="flex">
+
+          <label className="bad-word-filter-label" htmlFor="filter-title-checkbox">
+            Filter explicit titles
+          </label>
+            <input
+                className="bad-word-filter-checkbox"
+                type="checkbox"
+                checked={isFilterEnabled}
+                onChange={handleToggle}
+                id="filter-title-checkbox"
+            />
+        </section>
+        <StaticChannels content={events.staticContent} filterExplicitTitles={isFilterEnabled}/>
+      </Tab>
     </div>
   );
 };

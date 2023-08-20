@@ -1,20 +1,12 @@
-import logo from "./logo.svg";
-import "./App.css";
 import { ContentWallContainer } from "./components/container/ContentWallContainer";
-import { Navbar } from "./components/container/Navbar";
 import { ApolloProvider } from "@apollo/client";
 import client from "./apolloClient";
 function App() {
   return (
     <ApolloProvider client={client}>
       <div className="App">
-        <header className="App-header">
-          <Navbar />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
+          <h1 className="header-1">CatcherTV: All Things Predator Catching!</h1>
           <ContentWallContainer />
-        </header>
       </div>
     </ApolloProvider>
   );
