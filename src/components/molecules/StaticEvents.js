@@ -1,4 +1,6 @@
 import React from "react";
+import SimpleBar from 'simplebar-react';
+import 'simplebar-react/dist/simplebar.min.css';
 import {filterWords} from "../../utils/filterwords";
 
 export const StaticChannels = ({content, filterExplicitTitles}) => {
@@ -6,11 +8,11 @@ export const StaticChannels = ({content, filterExplicitTitles}) => {
         return null;
     }
     return (
-        <div className="border-2 border-green-500 rounded p-4">
+        <div className="static-channels">
             <h2 className="text-green-500 font-bold text-lg mb-4">
                 Current Videos 🟢
             </h2>
-            <div className="scroll-container">
+            <SimpleBar style={{maxHeight:400}} >
                 {content.map((contentItem, index) => {
                         const title = filterExplicitTitles ? filterWords(contentItem.title) : contentItem.title;
                         return (
@@ -30,7 +32,7 @@ export const StaticChannels = ({content, filterExplicitTitles}) => {
                         )
                     }
                 )}
-            </div>
+            </SimpleBar>
         </div>
     );
 };
