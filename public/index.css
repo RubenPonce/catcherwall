@@ -129,7 +129,7 @@ button.active {
     align-items: center;
 }
 .card img {
-    max-width: 47%;
+    max-width: 50%;
     width: 100%;
     height: auto;
     border-radius: 2px;
