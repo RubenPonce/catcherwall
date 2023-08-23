@@ -9,10 +9,7 @@ export const ContentWallContainer = () => {
     liveChannels: [],
     staticContent: [],
   });
-  const [isFilterEnabled, setIsFilterEnabled] = useState(true);
-  const handleToggle = () => {
-    setIsFilterEnabled(!isFilterEnabled);
-  };
+
   useEffect(() => {
     if (!loading && !error) {
       //@TODO: add live through polling service
@@ -34,23 +31,11 @@ export const ContentWallContainer = () => {
   return (
     <div className="">
       {/* Tab for media providers */}
-      {loading? <p>Loading...</p>: null}
       <Tab>
         {/*        <LiveEvents channels={events.liveChannels} />*/}
-        <section className="flex">
 
-          <label className="bad-word-filter-label" htmlFor="filter-title-checkbox">
-            Filter explicit titles
-          </label>
-            <input
-                className="bad-word-filter-checkbox"
-                type="checkbox"
-                checked={isFilterEnabled}
-                onChange={handleToggle}
-                id="filter-title-checkbox"
-            />
-        </section>
-        <StaticChannels channels={events.staticContent} isFilterEnabled={isFilterEnabled} />
+        {loading? <p className="loading">Loading...</p>: null}
+        <StaticChannels channels={events.staticContent} />
       </Tab>
     </div>
   );

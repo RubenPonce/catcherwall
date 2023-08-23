@@ -11,6 +11,7 @@ export const GET_CONTENT_LATEST_CONTENT = gql`
         title
         url
         date
+        image
       }
     }
     __typename

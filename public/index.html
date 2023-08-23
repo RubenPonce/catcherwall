@@ -30,9 +30,9 @@
             </a>
         </div>
         <div class="nav-group">
-            <a href="#">
+            <!--<a href="#">
                 View All Catchers
-            </a>
+            </a>-->
             <a href="what-is-predator-catching.html">
                 What is Predator Catching?
             </a>
@@ -52,20 +52,9 @@
 
 <noscript>You need to enable JavaScript to run this app.</noscript>
 <div id="root"></div>
+<footer>
+    <p>&copy; 2023 CatcherTV. All rights reserved.</p>
+</footer>
 </body>
-<script>
-    const link = document.querySelector('#forum');
-    const modal = document.querySelector('#emailSignUpModal');
-    function openModal() {
-        modal.style.display = 'block';
-    }
-    function closeModal() {
-        modal.style.display = 'none';
-    }
-    document.addEventListener('keyup', function(event) {
-        if (event.key === 'Escape' || event.keyCode === 27) {
-            closeModal();
-        }
-    });
-</script>
+<script src="index.js"></script>
 </html>

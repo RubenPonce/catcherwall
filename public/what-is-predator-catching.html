@@ -3,18 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./temp-html.css">
     <title>What is Predator Catching?</title>
 </head>
 <body>
-<nav>
-    <a href="index.html">Home</a>
-    <a href="forum.html">Visit Forum</a>
-    <a href="/" class="logo-link">
-        <img src="logo.svg" alt="Home/Catcher TV Logo" class="logo">
-    </a>
-    <a href="catchers.html">View All Catchers</a>
-</nav>
+    <nav class="text nav-bar">
+        <div class="nav-group">
+            <a href="#" id="forum" onclick="openModal()">
+                Visit Forum
+            </a>
+        </div>
+        <div class="logo-container">
+            <a href="/">
+                <img src="logo.svg" alt="Home/Catcher TV Logo" class="logo">
+            </a>
+        </div>
+        <div class="nav-group">
+<!-- @TODO implement view all catchers page           <a href="#">
+                View All Catchers
+            </a>-->
+            <a href="what-is-predator-catching.html">
+                What is Predator Catching?
+            </a>
+        </div>
+    </nav>
 <header>
     <h1>What is Predator Catching?</h1>
 </header>
@@ -49,5 +61,16 @@
 <footer>
     <p>&copy; 2023 CatcherTV. All rights reserved.</p>
 </footer>
+    <div class="modal" id="emailSignUpModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Get notified of the forum when it launches!</h2>
+            <form id="emailSignUpForm" netlify>
+                <input type="email" placeholder="Enter your email" required />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
 </body>
+<script src="index.js"></script>
 </html>

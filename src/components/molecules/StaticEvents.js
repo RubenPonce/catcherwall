@@ -7,12 +7,10 @@ export const StaticChannels = ({channels}) => {
             return new Date(b.timeOfLastUpdate) - new Date(a.timeOfLastUpdate);
         })
     }, [channels]);
-    console.log({latestUpdatedChannels})
     if (!channels.length) {
         return null;
     }
 
-    console.log({latestUpdatedChannels})
     return (
         <div className="static-channels">
             <h2>
