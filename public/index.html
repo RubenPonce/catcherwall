@@ -43,7 +43,7 @@
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
         <h2>Get notified of the forum when it launches!</h2>
-        <form id="emailSignUpForm" method="POST" netlify onsubmit="closeModal()">
+        <form id="emailSignUpForm" method="POST" data-netlify="true" onsubmit="closeModal()">
             <input type="email" placeholder="Enter your email" required />
             <button type="submit" onsubmit="closeModal()">Submit</button>
         </form>
