@@ -1,14 +1,14 @@
 :root {
     --primary-color: #029356;
-    --secondary-color: #009eb0;
-    --tertiary-color: #0073e6;
+    --secondary-color: #0073e6;
+    --tertiary-color: #009eb0;
     --quaternary-color: #fff;
     --quinary-color: #9b8bf4;
     --background-color: #f5f5f5;
 }
 
 .text {
-    color: var(--tertiary-color);
+    color: var(--secondary-color);
 }
 .header-1 {
     font-size: 24px;
@@ -30,8 +30,8 @@ body{
 }
 
 .logo {
-    height: 2rem;
-    width: 2rem;
+    height: 3rem;
+    width: 3rem;
     pointer-events: none;
 }
 
@@ -40,13 +40,33 @@ body{
         animation: App-logo-spin infinite 20s linear;
     }
 }
-.nav-bar{
+.nav-bar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     width: 100%;
+    flex-direction: row-reverse;
 }
 
+.nav-bar div:nth-child(1){
+    place-content: flex-end;
+}
+.nav-bar div:nth-child(3){
+    place-content: flex-start;
+}
+.nav-group {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    width: 45%;
+}
+.nav-group a {
+    margin-left: 1rem;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
 
 
 .static-channels {
@@ -75,10 +95,12 @@ button.rumble {
 .youtube-bg {
     background-color: #ff0000;
     color: white!important;
+    font-weight: bold;
 }
 .rumble-bg {
     background-color: #85c742;
     color: white !important;
+    font-weight: bold;
 }
 button.youtube {
     color: black;
@@ -106,7 +128,7 @@ button.active {
     font-size: 16px;
     color: #333;
     margin-right: 10px;
-    user-select: none; /* Prevent text selection on click */
+    user-select: none;
 }
 
 .bad-word-filter-checkbox {
@@ -150,4 +172,61 @@ button.active {
 .card p {
     color: #808080;
     font-size: 12px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #888;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.error-message {
+    color: #a94442;
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+.static-channels-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px; /* Adjust the gap between columns as needed */
+}
+.content-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }

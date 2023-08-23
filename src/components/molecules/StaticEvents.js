@@ -1,38 +1,28 @@
-import React from "react";
-import SimpleBar from 'simplebar-react';
-import 'simplebar-react/dist/simplebar.min.css';
-import {filterWords} from "../../utils/filterwords";
+import React, {useMemo} from "react";
+import {Channel} from "./Channel";
 
-export const StaticChannels = ({content, filterExplicitTitles}) => {
-    if (!content.length) {
+export const StaticChannels = ({channels}) => {
+    const latestUpdatedChannels = useMemo(() => {
+        return channels.sort((a, b) => {
+            return new Date(b.timeOfLastUpdate) - new Date(a.timeOfLastUpdate);
+        })
+    }, [channels]);
+    console.log({latestUpdatedChannels})
+    if (!channels.length) {
         return null;
     }
+
+    console.log({latestUpdatedChannels})
     return (
         <div className="static-channels">
-            <h2 className="text-green-500 font-bold text-lg mb-4">
+            <h2>
                 Current Videos 🟢
             </h2>
-            <SimpleBar style={{maxHeight:400}} >
-                {content.map((contentItem, index) => {
-                        const title = filterExplicitTitles ? filterWords(contentItem.title) : contentItem.title;
-                        return (
-                            <div key={index} className="card">
-                                <div>
-                                    <img src={contentItem.image} alt={contentItem.title}/>
-                                    <a
-                                        href={contentItem.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        {title}
-                                    </a>
-                                    <p>{contentItem.date}</p>
-                                </div>
-                            </div>
-                        )
-                    }
-                )}
-            </SimpleBar>
+            <div className="static-channels-container">
+                {latestUpdatedChannels.map((channel) => (
+                    <Channel key={channel.channelId} channel={channel}/>
+                ))}
+            </div>
         </div>
     );
 };

@@ -19,15 +19,22 @@ export const ContentWallContainer = () => {
       /*  const liveChannels = data.channels.filter(
         (channel) => channel.status.live.isLive,
       );*/
-      const staticContent = data.getLatestContent;
+      const staticContent = data.channels;
 
       setEvents({ staticContent });
     }
   }, [loading, error, data]);
-
+  if (error) {
+    return (
+        <div className="error-message">
+          <p>Something went wrong! Please try again later.</p>
+        </div>
+    );
+  }
   return (
     <div className="">
       {/* Tab for media providers */}
+      {loading? <p>Loading...</p>: null}
       <Tab>
         {/*        <LiveEvents channels={events.liveChannels} />*/}
         <section className="flex">
@@ -43,7 +50,7 @@ export const ContentWallContainer = () => {
                 id="filter-title-checkbox"
             />
         </section>
-        <StaticChannels content={events.staticContent} filterExplicitTitles={isFilterEnabled}/>
+        <StaticChannels channels={events.staticContent} isFilterEnabled={isFilterEnabled} />
       </Tab>
     </div>
   );

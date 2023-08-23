@@ -5,7 +5,7 @@ const tabClasses = {
     Rumble: 'rumble',
     Youtube: 'youtube',
 }
-const TabContext = React.createContext();
+export const TabContext = React.createContext();
 export function Tab({children}) {
     const [activeTab, setActiveTab] = useState('Rumble');
 
