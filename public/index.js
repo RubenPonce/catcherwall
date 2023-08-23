@@ -1,5 +1,9 @@
 const link = document.querySelector('#forum');
 const modal = document.querySelector('#emailSignUpModal');
+document.getElementById('emailSignUpForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+closeModal();
+});
 function openModal() {
     modal.style.display = 'block';
 }

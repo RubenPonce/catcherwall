@@ -2,15 +2,13 @@ import React, {useMemo} from "react";
 import {Channel} from "./Channel";
 
 export const StaticChannels = ({channels}) => {
-    const latestUpdatedChannels = useMemo(() => {
-        return channels.sort((a, b) => {
-            return new Date(b.timeOfLastUpdate) - new Date(a.timeOfLastUpdate);
-        })
-    }, [channels]);
     if (!channels.length) {
         return null;
     }
-
+    //@TODO rm copy of array
+    const latestUpdatedChannels = [...channels].sort((a, b) => {
+        return new Date(b.timeOfLastUpdate) - new Date(a.timeOfLastUpdate);
+    })
     return (
         <div className="static-channels">
             <h2>

@@ -276,3 +276,6 @@ input[type="email"] {
     font-weight: bold;
     text-align: center;
 }
+#forum{
+    cursor: pointer;
+}

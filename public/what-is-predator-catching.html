@@ -9,7 +9,7 @@
 <body>
     <nav class="text nav-bar">
         <div class="nav-group">
-            <a href="#" id="forum" onclick="openModal()">
+            <a id="forum" onclick="openModal()">
                 Visit Forum
             </a>
         </div>
@@ -65,7 +65,7 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <h2>Get notified of the forum when it launches!</h2>
-            <form id="emailSignUpForm" netlify>
+            <form id="emailSignUpForm" netlify onsubmit="closeModal()">
                 <input type="email" placeholder="Enter your email" required />
                 <button type="submit">Submit</button>
             </form>
