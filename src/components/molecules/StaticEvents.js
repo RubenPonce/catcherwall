@@ -1,4 +1,4 @@
-import React, {useMemo} from "react";
+import React from 'react';
 import {Channel} from "./Channel";
 
 export const StaticChannels = ({channels}) => {
