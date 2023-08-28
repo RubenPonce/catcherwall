@@ -25,6 +25,8 @@ const GET_CHANNELS = gql`
 `;
 
 export const useGetChannels = () => {
-  const { loading, error, data } = useQuery(GET_CHANNELS);
+  const { loading, error, data } = useQuery(GET_CHANNELS, {
+    fetchPolicy: "cache-and-network",
+  });
   return { loading, error, data };
 };

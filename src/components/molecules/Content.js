@@ -12,9 +12,15 @@ function timeAgo(minutes) {
         return `${days} days ago`;
     }
 }
+
+/**
+ * @param e {Event}
+ */
 const now = new Date();
 export const Content = ({content}) => {
-
+    const handleError = (e) => {
+        e.target.parentElement.parentElement.style.display = "none"
+    }
     const {isFilterEnabled} = useContext(TabContext);
     return (
             <div className="content-container">
@@ -28,7 +34,7 @@ export const Content = ({content}) => {
                         <p className={!diffInMinutes.includes("day")? "time-ago" : ""}> {diffInMinutes}</p>
 
                     <a className="content"  href={content.url} key={content.url}>
-                        <img src={content.image} alt={content.title}/>
+                        <img src={content.image} alt={content.title} onError={handleError}/>
 
                     <h4>{title}</h4>
                         </a>
