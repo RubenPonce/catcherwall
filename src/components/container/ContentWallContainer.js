@@ -4,7 +4,7 @@ import { useGetContentLatestContent } from "../../queries/getContent";
 import {Tab} from "../atoms/Tab";
 
 export const ContentWallContainer = () => {
-  const { loading, error, data } = useGetContentLatestContent();
+  const {loading, error, data} = useGetContentLatestContent();
   const [events, setEvents] = useState({
     liveChannels: [],
     staticContent: [],
@@ -18,7 +18,7 @@ export const ContentWallContainer = () => {
       );*/
       const staticContent = data.channels;
 
-      setEvents({ staticContent });
+      setEvents({staticContent});
     }
   }, [loading, error, data]);
   if (error) {
@@ -28,13 +28,17 @@ export const ContentWallContainer = () => {
         </div>
     );
   }
+  if (loading) {
+    return (
+        <p className="loading">Loading...</p>
+  )
+}
+
   return (
     <div className="">
       {/* Tab for media providers */}
       <Tab>
         {/*        <LiveEvents channels={events.liveChannels} />*/}
-
-        {loading? <p className="loading">Loading...</p>: null}
         <StaticChannels channels={events.staticContent} />
       </Tab>
     </div>
