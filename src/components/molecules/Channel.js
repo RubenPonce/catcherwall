@@ -1,8 +1,6 @@
 import {Content} from "./Content";
 
 export const Channel = ({channel}) => {
-
-    console.log({channel, content: channel.content})
     return (
         <>
             <div className="card">
