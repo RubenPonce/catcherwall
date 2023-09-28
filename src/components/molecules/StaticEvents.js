@@ -1,12 +1,10 @@
 import React from 'react';
-import {Channel} from "./Channel";
 import {Content} from "./Content";
 
 export const StaticChannels = ({channels}) => {
     if (!channels.length) {
         return null;
     }
-    //@TODO rm copy of array
     const latestUpdatedChannels = [...channels].sort((a, b) => {
         return new Date(b.timeOfLastUpdate) - new Date(a.timeOfLastUpdate);
     })
@@ -17,7 +15,6 @@ export const StaticChannels = ({channels}) => {
         }))
     );
 
-    console.log({allContent})
  const sortedContent =     allContent.sort((a, b) => new Date(b.date) - new Date(a.date));
     return (
         <div className="static-channels">
