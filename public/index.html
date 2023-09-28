@@ -14,42 +14,6 @@
     <title>Catcher TV</title>
 </head>
 <body>
-<div class="bg-blue-600 p-4 flex justify-between items-center">
-    <!--    <a href="#" class="text-white font-semibold hover:underline">-->
-    <!--      Enable Browser Notifications-->
-    <!--    </a> @TODO @FUTURE implement browser notifications-->
-    <nav class="text nav-bar">
-        <div class="nav-group">
-            <a id="forum" onclick="openModal()">
-                Visit Forum
-            </a>
-        </div>
-        <div class="logo-container">
-            <a href="/">
-                <img src="logo.svg" alt="Home/Catcher TV Logo" class="logo">
-            </a>
-        </div>
-        <div class="nav-group">
-            <!--<a href="#">
-                View All Catchers
-            </a>-->
-            <a href="what-is-predator-catching.html">
-                What is Predator Catching?
-            </a>
-        </div>
-    </nav>
-</div>
-<div class="modal" id="emailSignUpModal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Get notified of the forum when it launches!</h2>
-        <form id="emailSignUpForm" method="POST" data-netlify="true" onsubmit="closeModal()">
-            <input type="email" placeholder="Enter your email" required />
-            <button type="submit" onsubmit="closeModal()">Submit</button>
-        </form>
-    </div>
-</div>
-
 <noscript>You need to enable JavaScript to run this app.</noscript>
 <div id="root"></div>
 <footer>

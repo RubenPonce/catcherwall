@@ -5,7 +5,6 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="App">
-          <h1 className="header-1">CatcherTV: All Things Predator Catching!</h1>
           <ContentWallContainer />
       </div>
     </ApolloProvider>
