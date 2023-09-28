@@ -245,6 +245,11 @@ input[type="email"] {
     font-size: 16px;
     text-align: center;
 }
+.all-channel-content{
+    height: 600px;
+    overflow-y: scroll;
+
+}
 .static-channels-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -263,10 +268,7 @@ input[type="email"] {
     max-height: 400px;
     overflow: scroll;
 }
-.content-piece{
-    border-bottom: var(--secondary-color) 1px solid;);
-    padding: 1rem 0;
-}
+
 .content-number{
     font-size: 24px !important;
     font-weight: bold;

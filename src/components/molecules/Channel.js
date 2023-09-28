@@ -1,12 +1,11 @@
 import {Content} from "./Content";
 
 export const Channel = ({channel}) => {
+    const name = channel.name;
+    const content = channel.content;
     return (
         <>
-            <div className="card">
-                <h3>{channel.name}</h3>
-                <Content content={channel.content}/>
-            </div>
+                <Content content={content} name={name}/>
         </>
     );
 }

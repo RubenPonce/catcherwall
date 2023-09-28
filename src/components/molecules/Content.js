@@ -17,19 +17,19 @@ function timeAgo(minutes) {
  * @param e {Event}
  */
 const now = new Date();
-export const Content = ({content}) => {
+export const Content = ({content, name, index}) => {
+    const {isFilterEnabled, setContentNotFoundCount, contentNotFounCount} = useContext(TabContext);
     const handleError = (e) => {
-        e.target.parentElement.parentElement.style.display = "none"
+        e.target.parentElement.parentElement.parentElement.style.display = "none"
+        setContentNotFoundCount(contentNotFounCount + 1);
     }
-    const {isFilterEnabled} = useContext(TabContext);
+const title =  isFilterEnabled ? filterWords(content.title) : content.title;
+const contentUploadedMinutesAgo = new Date(content.date);
+const diffInMinutes = timeAgo(Math.floor((now - contentUploadedMinutesAgo) / 60000) );
+
     return (
-            <div className="content-container">
-                {content.map((content, index) => {
-                    const contentUploadedMinutesAgo = new Date(content.date);
-                    const diffInMinutes = timeAgo(Math.floor((now - contentUploadedMinutesAgo) / 60000) );
-                    const title =  isFilterEnabled ? filterWords(content.title) : content.title;
-                    return (
-                    <div key={content.url} className="content-piece">
+                <div key={content.url} className="content-piece">
+                        <div>
                         <p className="content-number">{index + 1}</p>
                         <p className={!diffInMinutes.includes("day")? "time-ago" : ""}> {diffInMinutes}</p>
 
@@ -38,10 +38,10 @@ export const Content = ({content}) => {
 
                     <h4>{title}</h4>
                         </a>
+
                         <p>{content.date}</p>
-                    </div>
-                )}
-                )}
-            </div>
+                            <p className="content-name">{name}</p>
+                        </div>
+                </div>
     );
 }

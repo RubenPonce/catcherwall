@@ -6,11 +6,12 @@ export const TabContext = React.createContext();
 
 export function Tab({children}) {
     const [isFilterEnabled, setIsFilterEnabled] = useState(true);
+    const [contentNotFounCount, setContentNotFoundCount] = useState(0);
     const handleToggle = () => {
         setIsFilterEnabled(!isFilterEnabled);
     };
     return (
-        <TabContext.Provider value={{ isFilterEnabled}}>
+        <TabContext.Provider value={{ isFilterEnabled, setContentNotFoundCount, contentNotFounCount}}>
 
             <div className="tab-container">
                 <section className="flex">
@@ -30,6 +31,7 @@ export function Tab({children}) {
                     <div className={`all-channel-content`}>
                         {children}
                     </div>
+                    <p>{contentNotFounCount>0 ? 'Uploaded content deleted from media sources: ' + contentNotFounCount : ''}</p>
                 </div>
             </div>
 
