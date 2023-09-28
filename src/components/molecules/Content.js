@@ -33,8 +33,8 @@ const diffInMinutes = timeAgo(Math.floor((now - contentUploadedMinutesAgo) / 600
                         <p className="content-number">{index + 1}</p>
                         <p className={!diffInMinutes.includes("day")? "time-ago" : ""}> {diffInMinutes}</p>
 
-                    <a className="content"  href={content.url} key={content.url}>
-                        <img src={content.image} alt={content.title} onError={handleError}/>
+                    <a className="content"  href={content.url} key={content.url} rel="noopener noreferrer" target="_blank">
+                        <img src={content.image} alt={content.title} onError={handleError} className="content-image"/>
 
                     <h4>{title}</h4>
                         </a>
