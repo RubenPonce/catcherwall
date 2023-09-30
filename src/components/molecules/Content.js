@@ -1,5 +1,5 @@
 import {filterWords} from "../../utils/filterwords";
-import {useContext} from "react";
+import {useContext, useMemo} from "react";
 import {TabContext} from "../atoms/Tab";
 function timeAgo(minutes) {
     if (minutes < 60) {
@@ -23,7 +23,9 @@ export const Content = ({content, name, index}) => {
         e.target.parentElement.parentElement.parentElement.style.display = "none"
         setContentNotFoundCount(contentNotFounCount + 1);
     }
-const title =  isFilterEnabled ? filterWords(content.title) : content.title;
+    const title = useMemo(() => {
+        return isFilterEnabled ? filterWords(content.title) : content.title;
+    }, [isFilterEnabled, content.title]);
 const contentUploadedMinutesAgo = new Date(content.date);
 const diffInMinutes = timeAgo(Math.floor((now - contentUploadedMinutesAgo) / 60000) );
 
