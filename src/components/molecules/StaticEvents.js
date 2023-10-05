@@ -70,7 +70,7 @@ export const StaticChannels = ({channels}) => {
             <p style={{margin: "1em 0"}}>Page {currentPage} of {Math.ceil(allContent.length / itemsPerPage)}</p>
             <div className="static-channels-container">
                 {currentItems.map((content, index) => (
-                    <Content key={content.url} content={content} name={content.channelName} index={index}/>
+                    <Content key={content.url} content={content} name={content.channelName} index={allContent.indexOf(content)} />
                 ))}
             </div>
             {pagination(prevPage, nextPage)}
