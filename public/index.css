@@ -173,7 +173,7 @@ button.active {
 }
 .time-ago {
     font-size: 16px;
-    color : var(--primary-color);
+    color : var(--primary-color) !important;
     font-weight: bold;
     padding: 0;
     margin-bottom: 1rem;
@@ -399,7 +399,6 @@ button {
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
-        max-width: 50%;
         text-overflow: ellipsis;
     }
 &    .subtitle {
