@@ -1,6 +1,7 @@
 import {filterWords} from "../../utils/filterwords";
 import {useContext, useMemo} from "react";
 import {TabContext} from "../atoms/Tab";
+import {Card, Container, Image} from "react-bootstrap";
 function timeAgo(minutes) {
     if (minutes < 60) {
         return `${minutes} minutes ago`;
@@ -30,20 +31,23 @@ const contentUploadedMinutesAgo = new Date(content.date);
 const diffInMinutes = timeAgo(Math.floor((now - contentUploadedMinutesAgo) / 60000) );
 
     return (
-                <div key={content.url} className="content-piece">
-                        <div>
-                        <p className="content-number">{index + 1}</p>
-                        <p className={!diffInMinutes.includes("day")? "time-ago" : ""}> {diffInMinutes}</p>
+        <Card className="mb-4">
+            <Card.Body className="content-piece">
+                <Container fluid>
 
-                    <a className="content"  href={content.url} key={content.url} rel="noopener noreferrer" target="_blank">
-                        <img src={content.image} alt={content.title} onError={handleError} className="content-image"/>
+                    <Card.Link href={content.url} target="_blank" rel="noopener noreferrer">
+                        <Card.Text className="content-number">{index + 1}</Card.Text>
 
-                    <h4>{title}</h4>
-                        </a>
+                        <Card.Text className={!diffInMinutes.includes("day") ? "time-ago" : ""}>{diffInMinutes}</Card.Text>
+                        <Image src={content.image} alt={title} onError={handleError} loading="lazy" rounded className="content-image mb-2" />
+                    <Card.Title className="title truncate">{title}</Card.Title>
 
-                        <p>{content.date}</p>
-                            <p className="content-name">{name}</p>
-                        </div>
-                </div>
+                        <Card.Text className="date">{content.date}</Card.Text>
+                        <Card.Text className="content-name">{content.authorName}</Card.Text>
+                    </Card.Link>
+
+                </Container>
+            </Card.Body>
+        </Card>
     );
 }
